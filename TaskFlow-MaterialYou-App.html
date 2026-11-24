@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-accent="violet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#6750A4" id="metaThemeColor" />
+  <title>TaskFlow — Material You To-Do & Reminders</title>
+  <style>
+    :root {
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.10);
+      --shadow-fab: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Accent: Violet (Default Material You) */
+    [data-theme="light"][data-accent="violet"] {
+      --bg: #FEF7FF;
+      --surface: #F3EDF7;
+      --surface-high: #ECE6F0;
+      --card: #FFFFFF;
+      --primary: #6750A4;
+      --on-primary: #FFFFFF;
+      --primary-container: #EADDFF;
+      --on-primary-container: #21005D;
+      --secondary-container: #E8DEF8;
+      --on-secondary-container: #1D192B;
+      --text: #1D1B20;
+      --text-muted: #49454F;
+      --outline: #CAC4D0;
+      --danger: #B3261E;
+      --danger-container: #F9DEDC;
+      --success: #1E6E3D;
+      --success-container: #D3F3DF;
+      --warning: #8C5000;
+      --warning-container: #FFDFB8;
+    }
+    [data-theme="dark"][data-accent="violet"] {
+      --bg: #141218;
+      --surface: #1D1B20;
+      --surface-high: #2B2930;
+      --card: #211F26;
+      --primary: #D0BCFF;
+      --on-primary: #381E72;
+      --primary-container: #4F378B;
+      --on-primary-container: #EADDFF;
+      --secondary-container: #4A4458;
+      --on-secondary-container: #E8DEF8;
+      --text: #E6E0E9;
+      --text-muted: #CAC4D0;
+      --outline: #49454F;
+      --danger: #F2B8B5;
+      --danger-container: #8C1D18;
+      --success: #8FD9A8;
+      --success-container: #134E2B;
+      --warning: #FFB86B;
+      --warning-container: #633800;
+    }
+
+    /* Accent: Sage */
+    [data-theme="light"][data-accent="sage"] {
+      --bg: #F6FBF3;
+      --surface: #EAF2E6;
+      --surface-high: #E1EBDC;
+      --card: #FFFFFF;
+      --primary: #2E6B3E;
+      --on-primary: #FFFFFF;
+      --primary-container: #B1F3BE;
+      --on-primary-container: #00210B;
+      --secondary-container: #D5E8D4;
+      --on-secondary-container: #101F13;
+      --text: #181D18;
+      --text-muted: #414941;
+      --outline: #C1C9BF;
+      --danger: #B3261E;
+      --danger-container: #F9DEDC;
+      --success: #1E6E3D;
+      --success-container: #D3F3DF;
+      --warning: #8C5000;
+      --warning-container: #FFDFB8;
+    }
+    [data-theme="dark"][data-accent="sage"] {
+      --bg: #101510;
+      --surface: #181D18;
+      --surface-high: #232A23;
+      --card: #1C221C;
+      --primary: #96D6A3;
+      --on-primary: #003917;
+      --primary-container: #135228;
+      --on-primary-container: #B1F3BE;
+      --secondary-container: #394B3B;
+      --on-secondary-container: #D5E8D4;
+      --text: #E0E4DE;
+      --text-muted: #C1C9BF;
+      --outline: #414941;
+      --danger: #F2B8B5;
+      --danger-container: #8C1D18;
+      --success: #8FD9A8;
+      --success-container: #134E2B;
+      --warning: #FFB86B;
+      --warning-container: #633800;
+    }
+
+    /* Accent: Ocean */
+    [data-theme="light"][data-accent="ocean"] {
+      --bg: #F6FAFE;
+      --surface: #E9F1F8;
+      --surface-high: #DFE9F2;
+      --card: #FFFFFF;
+      --primary: #006494;
+      --on-primary: #FFFFFF;
+      --primary-container: #CBE6FF;
+      --on-primary-container: #001E30;
+      --secondary-container: #D3E5F5;
+      --on-secondary-container: #0C1D29;
+      --text: #171C20;
+      --text-muted: #41474D;
+      --outline: #C1C7CE;
+      --danger: #B3261E;
+      --danger-container: #F9DEDC;
+      --success: #1E6E3D;
+      --success-container: #D3F3DF;
+      --warning: #8C5000;
+      --warning-container: #FFDFB8;
+    }
+    [data-theme="dark"][data-accent="ocean"] {
+      --bg: #0F1418;
+      --surface: #171C20;
+      --surface-high: #22282D;
+      --card: #1B2126;
+      --primary: #8ECDFF;
+      --on-primary: #00344F;
+      --primary-container: #004B70;
+      --on-primary-container: #CBE6FF;
+      --secondary-container: #384956;
+      --on-secondary-container: #D3E5F5;
+      --text: #DFE3E8;
+      --text-muted: #C1C7CE;
+      --outline: #41474D;
+      --danger: #F2B8B5;
+      --danger-container: #8C1D18;
+      --success: #8FD9A8;
+      --success-container: #134E2B;
+      --warning: #FFB86B;
+      --warning-container: #633800;
+    }
+
+    /* Accent: Clay */
+    [data-theme="light"][data-accent="clay"] {
+      --bg: #FFF8F6;
+      --surface: #F7ECE9;
+      --surface-high: #EFE2DF;
+      --card: #FFFFFF;
+      --primary: #9C4234;
+      --on-primary: #FFFFFF;
+      --primary-container: #FFDAD4;
+      --on-primary-container: #410002;
+      --secondary-container: #F5DDD9;
+      --on-secondary-container: #2C1512;
+      --text: #231918;
+      --text-muted: #534341;
+      --outline: #D8C2BE;
+      --danger: #B3261E;
+      --danger-container: #F9DEDC;
+      --success: #1E6E3D;
+      --success-container: #D3F3DF;
+      --warning: #8C5000;
+      --warning-container: #FFDFB8;
+    }
+    [data-theme="dark"][data-accent="clay"] {
+      --bg: #1A1110;
+      --surface: #231918;
+      --surface-high: #2F2322;
+      --card: #281D1C;
+      --primary: #FFB4A8;
+      --on-primary: #5F150B;
+      --primary-container: #7D2B1F;
+      --on-primary-container: #FFDAD4;
+      --secondary-container: #5D3F3B;
+      --on-secondary-container: #F5DDD9;
+      --text: #F1DFDC;
+      --text-muted: #D8C2BE;
+      --outline: #534341;
+      --danger: #F2B8B5;
+      --danger-container: #8C1D18;
+      --success: #8FD9A8;
+      --success-container: #134E2B;
+      --warning: #FFB86B;
+      --warning-container: #633800;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    .app-shell {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-bottom: 92px;
+    }
+
+    /* Top App Bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--bg);
+      padding: 16px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid color-mix(in srgb, var(--outline) 35%, transparent);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-icon {
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      display: grid; place-items: center;
+      font-size: 19px; font-weight: 800;
+    }
+    .brand-title { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .brand-sub { font-size: 11.5px; color: var(--text-muted); }
+    .top-actions { display: flex; gap: 8px; align-items: center; }
+
+    .chip-btn {
+      border: none;
+      background: var(--surface-high);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.12s ease, background 0.2s ease;
+    }
+    .chip-btn:active { transform: scale(0.95); }
+    .chip-btn.primary {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+
+    /* Alert Banner for Pending Task Notifications */
+    .alert-banner {
+      margin: 12px 16px 0;
+      background: var(--warning-container);
+      color: var(--warning);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-md);
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      animation: slideDown 0.25s ease;
+    }
+    .alert-banner.show { display: flex; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .alert-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .alert-title { font-weight: 700; font-size: 14px; }
+    .alert-desc { font-size: 12.5px; opacity: 0.92; margin-top: 2px; }
+    .alert-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .alert-btn {
+      border: none;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--card);
+      color: var(--text);
+    }
+    .alert-btn.done { background: var(--primary); color: var(--on-primary); }
+
+    /* Nag Countdown Pill */
+    .nag-bar {
+      margin: 10px 16px 0;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 9px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .nag-badge {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    /* Views */
+    .view { display: none; padding: 14px 16px; flex-direction: column; gap: 14px; }
+    .view.active { display: flex; }
+
+    /* Progress Summary Card */
+    .summary-card {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border-radius: var(--radius-xl);
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .summary-title { font-size: 13px; font-weight: 600; opacity: 0.85; }
+    .summary-stat { font-size: 26px; font-weight: 800; margin: 2px 0 4px; }
+    .summary-sub { font-size: 12px; opacity: 0.85; }
+    .progress-ring-box {
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--primary);
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    /* Filter Chips */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      border: 1px solid var(--outline);
+      background: transparent;
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .filter-chip.active {
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+      border-color: transparent;
+    }
+
+    /* Task Cards */
+    .task-list { display: flex; flex-direction: column; gap: 10px; }
+    .task-card {
+      background: var(--card);
+      border: 1px solid color-mix(in srgb, var(--outline) 35%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px 15px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+    .task-card.completed { opacity: 0.68; }
+    .task-main { display: flex; align-items: flex-start; gap: 12px; }
+    .check-circle {
+      width: 24px; height: 24px;
+      border-radius: 8px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--on-primary);
+      display: grid; place-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 14px; font-weight: 800;
+      transition: background 0.15s ease;
+    }
+    .task-card.completed .check-circle {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .task-body { flex: 1; min-width: 0; }
+    .task-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .task-card.completed .task-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      align-items: center;
+    }
+    .pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--surface-high);
+      color: var(--text-muted);
+    }
+    .pill.high { background: var(--danger-container); color: var(--danger); }
+    .pill.med { background: var(--warning-container); color: var(--warning); }
+    .pill.low { background: var(--success-container); color: var(--success); }
+    .pill.habit { background: var(--primary-container); color: var(--on-primary-container); }
+    .pill.due { background: var(--secondary-container); color: var(--on-secondary-container); }
+
+    .task-actions { display: flex; gap: 6px; align-items: center; }
+    .icon-btn {
+      border: none;
+      background: var(--surface);
+      color: var(--text-muted);
+      width: 30px; height: 30px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .icon-btn.del:hover { background: var(--danger-container); color: var(--danger); }
+
+    /* Subtasks */
+    .subtask-box {
+      padding-left: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-top: 1px dashed color-mix(in srgb, var(--outline) 45%, transparent);
+      padding-top: 8px;
+    }
+    .subtask-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .sub-check {
+      width: 17px; height: 17px;
+      border-radius: 5px;
+      border: 1.8px solid var(--primary);
+      display: grid; place-items: center;
+      font-size: 11px; font-weight: 800;
+      cursor: pointer;
+      color: var(--on-primary);
+      flex-shrink: 0;
+    }
+    .sub-check.done { background: var(--primary); }
+    .sub-text.done { text-decoration: line-through; color: var(--text-muted); }
+    .sub-add-row { display: flex; gap: 6px; margin-top: 2px; }
+    .sub-input {
+      flex: 1;
+      border: 1px solid var(--outline);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 5px 9px;
+      font-size: 12.5px;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 36px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      color: var(--text-muted);
+    }
+    .empty-emoji { font-size: 36px; margin-bottom: 8px; }
+
+    /* Pomodoro Focus View */
+    .focus-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .mode-pills { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .timer-svg-wrap { position: relative; width: 210px; height: 210px; display: grid; place-items: center; }
+    .timer-svg { transform: rotate(-90deg); width: 210px; height: 210px; }
+    .timer-track { fill: none; stroke: var(--surface-high); stroke-width: 12; }
+    .timer-progress {
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 12;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.5s linear;
+    }
+    .timer-readout {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .timer-digits { font-size: 40px; font-weight: 800; letter-spacing: -1px; }
+    .timer-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    .focus-select {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--outline);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .focus-controls { display: flex; gap: 10px; }
+    .btn-primary {
+      border: none;
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-tonal {
+      border: none;
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Settings Cards */
+    .settings-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid color-mix(in srgb, var(--outline) 35%, transparent);
+    }
+    .settings-title { font-size: 15px; font-weight: 700; }
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+    }
+    .swatch-row { display: flex; gap: 10px; }
+    .swatch {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      cursor: pointer;
+    }
+    .swatch.active { border-color: var(--text); transform: scale(1.08); }
+    select.input-field, input.input-field {
+      width: 100%;
+      padding: 11px 13px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--outline);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font);
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 84px;
+      right: max(18px, calc(50vw - 222px));
+      background: var(--primary);
+      color: var(--on-primary);
+      border: none;
+      border-radius: 20px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-fab);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      z-index: 35;
+      transition: transform 0.15s ease;
+    }
+    .fab:active { transform: scale(0.94); }
+
+    /* Bottom Navigation Bar (Material 3) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      background: var(--surface);
+      border-top: 1px solid color-mix(in srgb, var(--outline) 35%, transparent);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px 6px 12px;
+      z-index: 40;
+    }
+    .nav-item {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .nav-pill {
+      padding: 4px 16px;
+      border-radius: 999px;
+      font-size: 17px;
+      transition: background 0.2s ease;
+    }
+    .nav-item.active { color: var(--text); font-weight: 700; }
+    .nav-item.active .nav-pill {
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+    }
+
+    /* Bottom Sheet Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 60;
+    }
+    .modal-backdrop.open { display: flex; }
+    .bottom-sheet {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card);
+      border-radius: 28px 28px 0 0;
+      padding: 20px 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-height: 88vh;
+      overflow-y: auto;
+      animation: sheetUp 0.22s ease;
+    }
+    @keyframes sheetUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .sheet-handle {
+      width: 38px; height: 4px;
+      background: var(--outline);
+      border-radius: 99px;
+      margin: 0 auto 4px;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    input[type="checkbox"].switch {
+      width: 20px; height: 20px; accent-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="brand">
+        <div class="brand-icon">✓</div>
+        <div>
+          <div class="brand-title">TaskFlow</div>
+          <div class="brand-sub" id="headerSubtitle">Android Material You Planner</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="chip-btn primary" id="notifPermBtn" onclick="requestNotificationAccess()">🔔 Alerts On</button>
+        <button class="chip-btn" onclick="toggleTheme()" id="themeToggleBtn">🌙</button>
+      </div>
+    </header>
+
+    <!-- Smart Reminder & Remaining Task Alert Banner -->
+    <div class="alert-banner" id="alertBanner">
+      <div class="alert-head">
+        <div>
+          <div class="alert-title" id="alertTitle">⏰ Unfinished Tasks Remaining</div>
+          <div class="alert-desc" id="alertDesc">You still have pending tasks waiting.</div>
+        </div>
+        <button class="alert-btn" onclick="dismissBanner()">✕</button>
+      </div>
+      <div class="alert-actions">
+        <button class="alert-btn done" id="alertDoneBtn" onclick="completeAlertTask()">✓ Mark Done</button>
+        <button class="alert-btn" onclick="snoozeAlertTask()">💤 Snooze 5m</button>
+        <button class="alert-btn" onclick="triggerImmediateReminder(true)">🔊 Test Ring</button>
+      </div>
+    </div>
+
+    <!-- Remaining Task Nag Countdown -->
+    <div class="nag-bar" id="nagBar">
+      <span id="nagStatusText">Pending task check: active</span>
+      <span class="nag-badge" id="nagCountdownBadge">Next check in 15:00</span>
+    </div>
+
+    <!-- VIEW 1: TASKS -->
+    <main class="view active" id="view-tasks">
+      <section class="summary-card">
+        <div>
+          <div class="summary-title">TODAY'S PROGRESS</div>
+          <div class="summary-stat" id="summaryFraction">0 / 0 Done</div>
+          <div class="summary-sub" id="summaryMessage">Add a task or tick off completed items</div>
+        </div>
+        <div class="progress-ring-box" id="summaryPercent">0%</div>
+      </section>
+
+      <div class="filter-row">
+        <button class="filter-chip active" data-filter="all" onclick="setFilter('all', this)">All</button>
+        <button class="filter-chip" data-filter="pending" onclick="setFilter('pending', this)">Remaining</button>
+        <button class="filter-chip" data-filter="completed" onclick="setFilter('completed', this)">Completed</button>
+        <button class="filter-chip" data-filter="high" onclick="setFilter('high', this)">High Priority</button>
+      </div>
+
+      <div class="task-list" id="taskList"></div>
+    </main>
+
+    <!-- VIEW 2: DAILY HABITS -->
+    <main class="view" id="view-habits">
+      <section class="summary-card">
+        <div>
+          <div class="summary-title">RECURRING DAILY HABITS</div>
+          <div class="summary-stat" id="habitStreakHeadline">0 Active Habits</div>
+          <div class="summary-sub" id="habitResetInfo">Auto-resets every morning at 08:00 AM</div>
+        </div>
+        <div class="progress-ring-box">🔥</div>
+      </section>
+      <div class="task-list" id="habitList"></div>
+    </main>
+
+    <!-- VIEW 3: FOCUS / POMODORO TIMER -->
+    <main class="view" id="view-focus">
+      <div class="focus-card">
+        <div class="mode-pills">
+          <button class="filter-chip active" onclick="setTimerMode(25*60, 'Focus Session', this)">25m Focus</button>
+          <button class="filter-chip" onclick="setTimerMode(5*60, 'Short Break', this)">5m Break</button>
+          <button class="filter-chip" onclick="setTimerMode(15*60, 'Long Break', this)">15m Break</button>
+          <button class="filter-chip" onclick="setTimerMode(10, 'Quick Test', this)">10s Test</button>
+        </div>
+
+        <div class="timer-svg-wrap">
+          <svg class="timer-svg" viewBox="0 0 210 210">
+            <circle class="timer-track" cx="105" cy="105" r="90"></circle>
+            <circle class="timer-progress" id="timerCircle" cx="105" cy="105" r="90" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+          </svg>
+          <div class="timer-readout">
+            <div class="timer-digits" id="timerDisplay">25:00</div>
+            <div class="timer-label" id="timerModeLabel">Focus Session</div>
+          </div>
+        </div>
+
+        <select class="focus-select" id="focusTaskSelect"></select>
+
+        <div class="focus-controls">
+          <button class="btn-primary" id="timerStartBtn" onclick="toggleTimer()">▶ Start Focus</button>
+          <button class="btn-tonal" onclick="resetTimer()">↺ Reset</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- VIEW 4: SETTINGS & ANDROID -->
+    <main class="view" id="view-settings">
+      <div class="settings-card">
+        <div class="settings-title">🎨 Material You Dynamic Theme</div>
+        <div class="setting-row">
+          <span>Accent Color Palette</span>
+          <div class="swatch-row">
+            <button class="swatch active" style="background:#6750A4" data-acc="violet" onclick="setAccent('violet', this)"></button>
+            <button class="swatch" style="background:#2E6B3E" data-acc="sage" onclick="setAccent('sage', this)"></button>
+            <button class="swatch" style="background:#006494" data-acc="ocean" onclick="setAccent('ocean', this)"></button>
+            <button class="swatch" style="background:#9C4234" data-acc="clay" onclick="setAccent('clay', this)"></button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <span>Appearance Mode</span>
+          <button class="chip-btn" onclick="toggleTheme()">Switch Light / Dark</button>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-title">🔔 Remaining Task Reminder Engine</div>
+        <div style="font-size:12.5px; color:var(--text-muted);">
+          Automatically notifies you with sound + system alert if tasks remain unfinished.
+        </div>
+        <select class="input-field" id="nagIntervalSelect" onchange="updateNagInterval()">
+          <option value="0">Off (Only scheduled task times)</option>
+          <option value="1">Every 1 minute (Quick Test)</option>
+          <option value="15" selected>Every 15 minutes</option>
+          <option value="30">Every 30 minutes</option>
+          <option value="60">Every 1 hour</option>
+        </select>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn-primary" onclick="triggerImmediateReminder(true)">🔔 Test Notification Now</button>
+          <button class="btn-tonal" onclick="requestNotificationAccess()">Grant Permission</button>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-title">🌅 Daily Habit Auto-Reset</div>
+        <div class="setting-row">
+          <span>Morning Reset Hour</span>
+          <select class="input-field" style="width:auto;" id="resetHourSelect" onchange="updateResetHour()">
+            <option value="5">05:00 AM</option>
+            <option value="6">06:00 AM</option>
+            <option value="7">07:00 AM</option>
+            <option value="8" selected>08:00 AM</option>
+            <option value="9">09:00 AM</option>
+          </select>
+        </div>
+        <button class="btn-tonal" onclick="simulateMorningReset()">🔄 Test Morning Habit Reset</button>
+      </div>
+    </main>
+
+    <!-- FAB -->
+    <button class="fab" onclick="openModal()">＋ New Task</button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="switchView('tasks', this)">
+        <span class="nav-pill">☑️</span>
+        <span>Tasks</span>
+      </button>
+      <button class="nav-item" onclick="switchView('habits', this)">
+        <span class="nav-pill">🔥</span>
+        <span>Habits</span>
+      </button>
+      <button class="nav-item" onclick="switchView('focus', this)">
+        <span class="nav-pill">⏱️</span>
+        <span>Focus</span>
+      </button>
+      <button class="nav-item" onclick="switchView('settings', this)">
+        <span class="nav-pill">⚙️</span>
+        <span>Settings</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Add Task Bottom Sheet -->
+  <div class="modal-backdrop" id="taskModal" onclick="if(event.target===this) closeModal()">
+    <div class="bottom-sheet">
+      <div class="sheet-handle"></div>
+      <div style="font-size:18px; font-weight:800;">Create Task or Habit</div>
+
+      <input type="text" class="input-field" id="taskTitleInput" placeholder="What needs to be done?" />
+
+      <div class="grid-2">
+        <div>
+          <label style="font-size:11.5px; color:var(--text-muted); font-weight:700;">PRIORITY</label>
+          <select class="input-field" id="taskPriorityInput">
+            <option value="high">High Priority</option>
+            <option value="med" selected>Medium Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11.5px; color:var(--text-muted); font-weight:700;">REMINDER</label>
+          <select class="input-field" id="taskReminderPreset">
+            <option value="none">Use Nag Interval</option>
+            <option value="1">In 1 minute (Test)</option>
+            <option value="15">In 15 minutes</option>
+            <option value="30">In 30 minutes</option>
+            <option value="60">In 1 hour</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:11.5px; color:var(--text-muted); font-weight:700;">SUBTASKS / CHECKLIST (OPTIONAL, ONE PER LINE)</label>
+        <textarea class="input-field" id="taskSubtasksInput" rows="3" placeholder="Step 1&#10;Step 2"></textarea>
+      </div>
+
+      <label class="toggle-row">
+        <span>🔁 Recurring Daily Habit (Auto-resets daily)</span>
+        <input type="checkbox" class="switch" id="taskIsHabitInput" />
+      </label>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:4px;">
+        <button class="btn-tonal" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveNewTask()">Save Task</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'taskflow_android_v3';
+    const ACCENT_COLORS = {
+      violet: { light: '#6750A4', dark: '#141218' },
+      sage: { light: '#2E6B3E', dark: '#101510' },
+      ocean: { light: '#006494', dark: '#0F1418' },
+      clay: { light: '#9C4234', dark: '#1A1110' }
+    };
+
+    let state = {
+      theme: 'light',
+      accent: 'violet',
+      nagMinutes: 15,
+      resetHour: 8,
+      lastResetDate: new Date().toDateString(),
+      filter: 'all',
+      tasks: [
+        {
+          id: 't1',
+          title: 'Complete today’s top priority task',
+          priority: 'high',
+          completed: false,
+          isHabit: false,
+          streak: 0,
+          dueAt: Date.now() + 15 * 60000,
+          notified: false,
+          expanded: true,
+          subtasks: [
+            { id: 's1', text: 'Break into quick steps', done: true },
+            { id: 's2', text: 'Tick off when finished', done: false }
+          ]
+        },
+        {
+          id: 't2',
+          title: 'Drink 2L Water & Morning Revision',
+          priority: 'med',
+          completed: false,
+          isHabit: true,
+          streak: 3,
+          dueAt: null,
+          notified: false,
+          expanded: false,
+          subtasks: []
+        }
+      ]
+    };
+
+    let nagSecondsLeft = 15 * 60;
+    let activeAlertTaskId = null;
+
+    // Timer state
+    let timerTotal = 25 * 60;
+    let timerRemaining = 25 * 60;
+    let timerRunning = false;
+    let timerInterval = null;
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          state = { ...state, ...parsed };
+        }
+      } catch (e) {}
+      applyThemeAndAccent();
+      document.getElementById('nagIntervalSelect').value = String(state.nagMinutes);
+      document.getElementById('resetHourSelect').value = String(state.resetHour);
+      nagSecondsLeft = state.nagMinutes > 0 ? state.nagMinutes * 60 : 0;
+      checkDailyHabitReset();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function applyThemeAndAccent() {
+      document.documentElement.setAttribute('data-theme', state.theme);
+      document.documentElement.setAttribute('data-accent', state.accent);
+      document.getElementById('themeToggleBtn').textContent = state.theme === 'dark' ? '☀️' : '🌙';
+      const meta = document.getElementById('metaThemeColor');
+      if (meta) meta.setAttribute('content', ACCENT_COLORS[state.accent][state.theme]);
+      document.querySelectorAll('.swatch').forEach(s => {
+        s.classList.toggle('active', s.dataset.acc === state.accent);
+      });
+    }
+
+    function toggleTheme() {
+      state.theme = state.theme === 'light' ? 'dark' : 'light';
+      applyThemeAndAccent();
+      saveState();
+    }
+
+    function setAccent(acc, el) {
+      state.accent = acc;
+      applyThemeAndAccent();
+      saveState();
+    }
+
+    function checkDailyHabitReset() {
+      const now = new Date();
+      const todayStr = now.toDateString();
+      if (state.lastResetDate !== todayStr && now.getHours() >= state.resetHour) {
+        let changed = false;
+        state.tasks.forEach(t => {
+          if (t.isHabit) {
+            if (t.completed) {
+              t.streak = (t.streak || 0) + 1;
+            }
+            t.completed = false;
+            t.notified = false;
+            changed = true;
+          }
+        });
+        state.lastResetDate = todayStr;
+        if (changed) saveState();
+      }
+      document.getElementById('habitResetInfo').textContent =
+        `Auto-resets every morning at ${String(state.resetHour).padStart(2, '0')}:00`;
+    }
+
+    function simulateMorningReset() {
+      state.tasks.forEach(t => {
+        if (t.isHabit) {
+          if (t.completed) t.streak = (t.streak || 0) + 1;
+          t.completed = false;
+          t.notified = false;
+        }
+      });
+      saveState();
+      renderAll();
+      fireNotification('🌅 Morning Habit Reset', 'Daily habits are refreshed and ready for today!');
+    }
+
+    function playChime() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioCtx();
+        const notes = [587.33, 880];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.14);
+          gain.gain.setValueAtTime(0.18, ctx.currentTime + idx * 0.14);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.14 + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + idx * 0.14);
+          osc.stop(ctx.currentTime + idx * 0.14 + 0.36);
+        });
+      } catch (e) {}
+    }
+
+    function requestNotificationAccess() {
+      if ('Notification' in window && Notification.permission !== 'granted') {
+        Notification.requestPermission().then(updateNotifBadge);
+      }
+      playChime();
+      updateNotifBadge();
+    }
+
+    function updateNotifBadge() {
+      const btn = document.getElementById('notifPermBtn');
+      if (window.AndroidBridge) {
+        btn.textContent = '🔔 Native Alerts';
+        return;
+      }
+      if ('Notification' in window) {
+        btn.textContent = Notification.permission === 'granted' ? '🔔 Alerts On' : '🔔 Enable';
+      }
+    }
+
+    function fireNotification(title, body, taskId = null) {
+      playChime();
+      activeAlertTaskId = taskId;
+      document.getElementById('alertTitle').textContent = title;
+      document.getElementById('alertDesc').textContent = body;
+      document.getElementById('alertDoneBtn').style.display = taskId ? 'inline-block' : 'none';
+      document.getElementById('alertBanner').classList.add('show');
+
+      // Native Android WebView Bridge Notification
+      if (window.AndroidBridge && typeof window.AndroidBridge.sendNotification === 'function') {
+        try {
+          window.AndroidBridge.sendNotification(title, body);
+          return;
+        } catch (e) {}
+      }
+
+      // Standard Web Notification fallback
+      if ('Notification' in window && Notification.permission === 'granted') {
+        try {
+          new Notification(title, { body });
+        } catch (e) {}
+      }
+    }
+
+    function dismissBanner() {
+      document.getElementById('alertBanner').classList.remove('show');
+    }
+
+    function completeAlertTask() {
+      if (activeAlertTaskId) {
+        toggleTask(activeAlertTaskId);
+      }
+      dismissBanner();
+    }
+
+    function snoozeAlertTask() {
+      if (activeAlertTaskId) {
+        const t = state.tasks.find(x => x.id === activeAlertTaskId);
+        if (t) {
+          t.dueAt = Date.now() + 5 * 60000;
+          t.notified = false;
+          saveState();
+          renderAll();
+        }
+      }
+      nagSecondsLeft = 5 * 60;
+      dismissBanner();
+    }
+
+    function triggerImmediateReminder(isManual = false) {
+      const pending = state.tasks.filter(t => !t.completed);
+      if (pending.length === 0) {
+        if (isManual) {
+          fireNotification('🎉 All Caught Up!', 'You have zero remaining tasks right now.');
+        }
+        return;
+      }
+      const top = pending.find(t => t.priority === 'high') || pending[0];
+      fireNotification(
+        `⏰ ${pending.length} Task${pending.length > 1 ? 's' : ''} Remaining`,
+        `Next up: "${top.title}"`,
+        top.id
+      );
+    }
+
+    function updateNagInterval() {
+      state.nagMinutes = parseInt(document.getElementById('nagIntervalSelect').value, 10) || 0;
+      nagSecondsLeft = state.nagMinutes * 60;
+      saveState();
+      updateNagBar();
+    }
+
+    function updateResetHour() {
+      state.resetHour = parseInt(document.getElementById('resetHourSelect').value, 10) || 8;
+      saveState();
+      checkDailyHabitReset();
+    }
+
+    function updateNagBar() {
+      const pendingCount = state.tasks.filter(t => !t.completed).length;
+      const bar = document.getElementById('nagBar');
+      const statusText = document.getElementById('nagStatusText');
+      const badge = document.getElementById('nagCountdownBadge');
+
+      if (pendingCount === 0) {
+        statusText.textContent = '✨ All tasks completed! No pending reminders.';
+        badge.textContent = 'Done';
+        return;
+      }
+      if (state.nagMinutes <= 0) {
+        statusText.textContent = `${pendingCount} task(s) remaining • Interval nag off`;
+        badge.textContent = 'Scheduled only';
+        return;
+      }
+      const mins = Math.floor(nagSecondsLeft / 60);
+      const secs = nagSecondsLeft % 60;
+      statusText.textContent = `${pendingCount} task(s) remaining`;
+      badge.textContent = `Reminder in ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // Background 1-second ticker for due tasks, nag interval & Pomodoro timer
+    setInterval(() => {
+      const now = Date.now();
+      let dirty = false;
+
+      // Check scheduled due times
+      state.tasks.forEach(t => {
+        if (!t.completed && t.dueAt && !t.notified && now >= t.dueAt) {
+          t.notified = true;
+          dirty = true;
+          fireNotification('⏰ Task Reminder Due', t.title, t.id);
+        }
+      });
+      if (dirty) saveState();
+
+      // Check remaining-task nag countdown
+      const pending = state.tasks.filter(t => !t.completed);
+      if (pending.length > 0 && state.nagMinutes > 0) {
+        nagSecondsLeft--;
+        if (nagSecondsLeft <= 0) {
+          nagSecondsLeft = state.nagMinutes * 60;
+          triggerImmediateReminder(false);
+        }
+      }
+      updateNagBar();
+
+      // Pomodoro ticker
+      if (timerRunning) {
+        timerRemaining--;
+        if (timerRemaining <= 0) {
+          timerRemaining = 0;
+          timerRunning = false;
+          document.getElementById('timerStartBtn').textContent = '▶ Start Focus';
+          const selectedId = document.getElementById('focusTaskSelect').value;
+          const focusedTask = state.tasks.find(t => t.id === selectedId);
+          fireNotification(
+            '⏱️ Focus Session Complete!',
+            focusedTask ? `Finished session for "${focusedTask.title}"` : 'Great work! Take a short break.',
+            focusedTask ? focusedTask.id : null
+          );
+        }
+        renderTimer();
+      }
+    }, 1000);
+
+    function switchView(viewName, btn) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(`view-${viewName}`).classList.add('active');
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      btn.classList.add('active');
+      if (viewName === 'focus') populateFocusSelect();
+    }
+
+    function setFilter(filter, btn) {
+      state.filter = filter;
+      document.querySelectorAll('.filter-row .filter-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      renderTasks();
+    }
+
+    function toggleTask(id) {
+      const t = state.tasks.find(x => x.id === id);
+      if (!t) return;
+      t.completed = !t.completed;
+      if (t.completed) playChime();
+      saveState();
+      renderAll();
+    }
+
+    function deleteTask(id) {
+      state.tasks = state.tasks.filter(x => x.id !== id);
+      saveState();
+      renderAll();
+    }
+
+    function toggleExpand(id) {
+      const t = state.tasks.find(x => x.id === id);
+      if (!t) return;
+      t.expanded = !t.expanded;
+      saveState();
+      renderAll();
+    }
+
+    function toggleSubtask(taskId, subId) {
+      const t = state.tasks.find(x => x.id === taskId);
+      if (!t) return;
+      const s = t.subtasks.find(x => x.id === subId);
+      if (!s) return;
+      s.done = !s.done;
+      if (t.subtasks.length > 0 && t.subtasks.every(x => x.done)) {
+        t.completed = true;
+        playChime();
+      }
+      saveState();
+      renderAll();
+    }
+
+    function addSubtaskInline(taskId) {
+      const input = document.getElementById(`sub-in-${taskId}`);
+      if (!input || !input.value.trim()) return;
+      const t = state.tasks.find(x => x.id === taskId);
+      if (!t) return;
+      t.subtasks.push({ id: 's' + Date.now(), text: input.value.trim(), done: false });
+      t.expanded = true;
+      saveState();
+      renderAll();
+    }
+
+    function buildTaskCard(t) {
+      const prioLabel = t.priority === 'high' ? 'High' : t.priority === 'low' ? 'Low' : 'Medium';
+      const dueStr = t.dueAt
+        ? new Date(t.dueAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        : '';
+      const doneSubs = t.subtasks.filter(s => s.done).length;
+
+      const card = document.createElement('div');
+      card.className = `task-card ${t.completed ? 'completed' : ''}`;
+      card.innerHTML = `
+        <div class="task-main">
+          <button class="check-circle" onclick="toggleTask('${t.id}')">${t.completed ? '✓' : ''}</button>
+          <div class="task-body">
+            <div class="task-title">${escapeHtml(t.title)}</div>
+            <div class="task-meta">
+              <span class="pill ${t.priority}">${prioLabel}</span>
+              ${t.isHabit ? `<span class="pill habit">🔥 ${t.streak || 0}d Streak</span>` : ''}
+              ${dueStr ? `<span class="pill due">⏰ ${dueStr}</span>` : ''}
+              ${t.subtasks.length ? `<span class="pill">☑ ${doneSubs}/${t.subtasks.length}</span>` : ''}
+            </div>
+          </div>
+          <div class="task-actions">
+            <button class="icon-btn" title="Subtasks" onclick="toggleExpand('${t.id}')">☰</button>
+            <button class="icon-btn del" title="Delete" onclick="deleteTask('${t.id}')">🗑</button>
+          </div>
+        </div>
+        ${t.expanded ? `
+          <div class="subtask-box">
+            ${t.subtasks.map(s => `
+              <div class="subtask-item">
+                <div class="sub-check ${s.done ? 'done' : ''}" onclick="toggleSubtask('${t.id}', '${s.id}')">${s.done ? '✓' : ''}</div>
+                <span class="sub-text ${s.done ? 'done' : ''}">${escapeHtml(s.text)}</span>
+              </div>
+            `).join('')}
+            <div class="sub-add-row">
+              <input class="sub-input" id="sub-in-${t.id}" placeholder="Add step..." onkeydown="if(event.key==='Enter') addSubtaskInline('${t.id}')" />
+              <button class="chip-btn primary" onclick="addSubtaskInline('${t.id}')">+ Add</button>
+            </div>
+          </div>
+        ` : ''}
+      `;
+      return card;
+    }
+
+    function renderTasks() {
+      const list = document.getElementById('taskList');
+      list.innerHTML = '';
+
+      const total = state.tasks.length;
+      const done = state.tasks.filter(t => t.completed).length;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      document.getElementById('summaryFraction').textContent = `${done} / ${total} Done`;
+      document.getElementById('summaryPercent').textContent = `${pct}%`;
+      document.getElementById('summaryMessage').textContent =
+        total - done > 0
+          ? `${total - done} task(s) remaining — reminders active`
+          : 'All tasks ticked off! Great job.';
+
+      const filtered = state.tasks.filter(t => {
+        if (state.filter === 'pending') return !t.completed;
+        if (state.filter === 'completed') return t.completed;
+        if (state.filter === 'high') return t.priority === 'high';
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        list.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-emoji">✨</div>
+            <div style="font-weight:700; color:var(--text);">No tasks in this view</div>
+            <div style="font-size:13px; margin-top:4px;">Tap <b>+ New Task</b> below to add one.</div>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(t => list.appendChild(buildTaskCard(t)));
+    }
+
+    function renderHabits() {
+      const list = document.getElementById('habitList');
+      list.innerHTML = '';
+      const habits = state.tasks.filter(t => t.isHabit);
+      document.getElementById('habitStreakHeadline').textContent = `${habits.length} Daily Habit${habits.length === 1 ? '' : 's'}`;
+
+      if (habits.length === 0) {
+        list.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-emoji">🔥</div>
+            <div style="font-weight:700; color:var(--text);">No recurring habits yet</div>
+            <div style="font-size:13px; margin-top:4px;">Create a task and toggle <b>Recurring Daily Habit</b>.</div>
+          </div>
+        `;
+        return;
+      }
+      habits.forEach(h => list.appendChild(buildTaskCard(h)));
+    }
+
+    function populateFocusSelect() {
+      const sel = document.getElementById('focusTaskSelect');
+      const pending = state.tasks.filter(t => !t.completed);
+      sel.innerHTML = pending.length
+        ? pending.map(t => `<option value="${t.id}">Focus on: ${escapeHtml(t.title)}</option>`).join('')
+        : `<option value="">No pending tasks — Free Focus Session</option>`;
+    }
+
+    function setTimerMode(seconds, label, btn) {
+      timerRunning = false;
+      timerTotal = seconds;
+      timerRemaining = seconds;
+      document.getElementById('timerModeLabel').textContent = label;
+      document.getElementById('timerStartBtn').textContent = '▶ Start Focus';
+      document.querySelectorAll('#view-focus .filter-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      renderTimer();
+    }
+
+    function toggleTimer() {
+      timerRunning = !timerRunning;
+      document.getElementById('timerStartBtn').textContent = timerRunning ? '⏸ Pause' : '▶ Resume';
+    }
+
+    function resetTimer() {
+      timerRunning = false;
+      timerRemaining = timerTotal;
+      document.getElementById('timerStartBtn').textContent = '▶ Start Focus';
+      renderTimer();
+    }
+
+    function renderTimer() {
+      const mins = Math.floor(timerRemaining / 60);
+      const secs = timerRemaining % 60;
+      document.getElementById('timerDisplay').textContent =
+        `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      const circumference = 565.48;
+      const offset = circumference * (1 - timerRemaining / Math.max(1, timerTotal));
+      document.getElementById('timerCircle').style.strokeDashoffset = String(offset);
+    }
+
+    function openModal() {
+      document.getElementById('taskModal').classList.add('open');
+      setTimeout(() => document.getElementById('taskTitleInput').focus(), 100);
+    }
+
+    function closeModal() {
+      document.getElementById('taskModal').classList.remove('open');
+    }
+
+    function saveNewTask() {
+      const title = document.getElementById('taskTitleInput').value.trim();
+      if (!title) return;
+
+      const priority = document.getElementById('taskPriorityInput').value;
+      const preset = document.getElementById('taskReminderPreset').value;
+      const isHabit = document.getElementById('taskIsHabitInput').checked;
+      const subLines = document.getElementById('taskSubtasksInput').value
+        .split('\n')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      const dueAt = preset !== 'none' ? Date.now() + parseInt(preset, 10) * 60000 : null;
+
+      state.tasks.unshift({
+        id: 't' + Date.now(),
+        title,
+        priority,
+        completed: false,
+        isHabit,
+        streak: 0,
+        dueAt,
+        notified: false,
+        expanded: subLines.length > 0,
+        subtasks: subLines.map((text, i) => ({ id: `s${Date.now()}_${i}`, text, done: false }))
+      });
+
+      document.getElementById('taskTitleInput').value = '';
+      document.getElementById('taskSubtasksInput').value = '';
+      document.getElementById('taskIsHabitInput').checked = false;
+      document.getElementById('taskReminderPreset').value = 'none';
+
+      saveState();
+      closeModal();
+      renderAll();
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    function renderAll() {
+      renderTasks();
+      renderHabits();
+      populateFocusSelect();
+      updateNagBar();
+      updateNotifBadge();
+    }
+
+    loadState();
+    renderAll();
+    renderTimer();
+  </script>
+</body>
+</html>
